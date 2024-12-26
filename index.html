@@ -13,41 +13,46 @@
             background: linear-gradient(to bottom, #ffcccc, #ffe6e6);
             color: #333;
             text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            min-height: 100vh;
             overflow-x: hidden;
-            position: relative;
         }
 
         /* Contenedor principal */
         .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    height: 100vh;
-    text-align: center; /* Centra el texto horizontalmente */
-    box-sizing: border-box; /* Incluye padding en el ancho total */
-}
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            max-width: 90%;
+            box-sizing: border-box;
+        }
 
         /* Encabezados */
         h1 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: #b30000;
             text-shadow: 2px 2px 4px #660000;
             margin-bottom: 20px;
+            line-height: 1.2;
         }
 
         h2 {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             color: #008000;
             margin: 20px 0;
+            line-height: 1.2;
         }
 
         /* Botones */
         .button {
-            margin-top: 10px;
+            margin: 10px 5px;
             padding: 10px 20px;
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #fff;
             background-color: #008000;
             border: none;
@@ -62,49 +67,25 @@
             transform: scale(1.1);
         }
 
-        .button:disabled {
-            background-color: #aaa;
-            cursor: not-allowed;
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         /* Tarjeta de mensaje */
         .card {
-        margin-top: 20px;
-        display: none;
-        background: #fff;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-        max-width: 90%; /* Cambiado para que ocupe casi todo el ancho */
-        width: 500px;   /* Ancho máximo */
-        font-size: 1.1rem; /* Ajustado para mejor legibilidad */
-        color: #333;
-        line-height: 1.8; /* Espaciado entre líneas */
-        text-align: justify; /* Alinear el texto para mejor presentación */
-    }
-        .message-card {
+            margin-top: 20px;
             display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             background: #fff;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
-            text-align: center;
-            font-size: 1.2rem;
-            z-index: 10;
-        }
-
-        .message-card .close {
-            position: absolute;
-            top: 5px;
-            right: 10px;
-            font-size: 1.5rem;
-            font-weight: bold;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 100%;
+            font-size: 1rem;
             color: #333;
-            cursor: pointer;
+            line-height: 1.6;
+            text-align: justify;
         }
 
         /* Nieve animada */
@@ -142,19 +123,14 @@
     <div class="container">
         <h1>Fuiste lo mejor de mi 2024 🎄</h1>
         <h2>¿Quieres ser parte de mi 2025? 💖</h2>
-        <div>
+        <div class="button-container">
             <button class="button" id="yesButton" onclick="showCard()">Sí ❤️</button>
             <button class="button" id="noButton" onclick="askAgain()">No 💔</button>
         </div>
         <div class="card" id="card">
-            <p> Este 2024 fue especial porque tú estuviste a mi lado, llenando mis días de amor, risas y momentos inolvidables. Cada día contigo es un regalo, y no puedo esperar a seguir construyendo recuerdos a tu lado en 2025. Gracias por ser mi mayor apoyo, mi alegría y mi todo. Prometo que este nuevo año será aún mejor, porque te amo con todo mi corazón y, contigo, cada día tiene más sentido. ❤️✨</p>
-        <p>Te amo mi precioso Yamil💖</p>
+            <p>Este 2024 fue especial porque tú estuviste a mi lado, llenando mis días de amor, risas y momentos inolvidables. Cada día contigo es un regalo, y no puedo esperar a seguir construyendo recuerdos a tu lado en 2025. Gracias por ser mi mayor apoyo, mi alegría y mi todo. ❤️</p>
+            <p>Te amo mi precioso Yamil 💖</p>
         </div>
-    </div>
-
-    <div class="message-card" id="messageCard">
-        <span class="close" onclick="closeMessageCard()">&times;</span>
-        <p id="messageContent"></p>
     </div>
 
     <div class="snow" id="snow"></div>
@@ -172,17 +148,7 @@
                 '¡Vamos! Dame una oportunidad 🥺',
                 '¿No reconsideras? 😢'
             ];
-            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-            const messageCard = document.getElementById('messageCard');
-            const messageContent = document.getElementById('messageContent');
-
-            messageContent.textContent = randomMessage;
-            messageCard.style.display = 'block';
-        }
-
-        function closeMessageCard() {
-            const messageCard = document.getElementById('messageCard');
-            messageCard.style.display = 'none';
+            alert(messages[Math.floor(Math.random() * messages.length)]);
         }
 
         function disableButtons() {
@@ -203,5 +169,6 @@
     </script>
 </body>
 </html>
+
 
 
